@@ -12,6 +12,7 @@ class Person{
 }
 public class Ex11 {
 
+	
 	public static void main(String[] args) {
 		Person p1 = new Person("1234455","송유진");
 		
