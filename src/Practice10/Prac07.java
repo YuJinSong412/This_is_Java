@@ -11,6 +11,7 @@ class WrongPasswordException extends Exception{
 	WrongPasswordException(String message){
 		super(message);
 	}
+	
 }
 public class Prac07 {
 
