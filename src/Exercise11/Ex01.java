@@ -6,7 +6,6 @@ class Member{
 	Member(String id){
 		this.id = id;
 	}
-	
 	public boolean equals(Object obj) {
 		if(obj instanceof Member) {
 			Member member = (Member)obj;
@@ -35,7 +34,6 @@ public class Ex01 {
 		}else {
 			System.out.println("동등하지 않습니다.");
 		}
-
 	}
 
 }
