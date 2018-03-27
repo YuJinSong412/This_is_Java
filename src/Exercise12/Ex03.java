@@ -16,7 +16,8 @@ class BeepThread extends Thread{
 public class Ex03 {
 
 	public static void main(String[] args) {
-		Thread thread = new BeepThread();
+		Thread thread = new BeepThread
+				();
 		thread.start();
 		
 		for(int i=0;i<5;i++) {
