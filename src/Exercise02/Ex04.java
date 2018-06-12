@@ -7,7 +7,7 @@ public class Ex04 {
 		char c2 = 65;
 		char c3 = '\u0041';
 		
-		char c4 = '가';
+		char c4 = 'B';
 		char c5 = 44032;
 		char c6 = '\uac00';
 		
