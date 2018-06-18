@@ -14,14 +14,13 @@ public class Prac08 {
 		for(int i=0;i<array.length;i++) {
 			for(int j=0;j<array[i].length;j++) {
 				sum += array[i][j];
-				
 			}
 		}
-		avg = (double)sum/10;
+		avg = (double)sum/10
+				;
 		
 		System.out.println("sum: "+sum);
 		System.out.println("avg: "+avg);
 
 	}
-
 }
