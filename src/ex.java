@@ -1,52 +1,127 @@
 import java.util.*;
 
+class Account{
+	private String ano;
+	private String owner;
+	private int balance;
+	
+	Account(String ano,String owner,int balance){
+		this.ano = ano;
+		this.owner = owner;
+		this.balance = balance;
+	}
+	public void setAno(String ano) {
+		this.ano = ano;
+	}
+	public String getAno() {
+		return ano;
+	}
+	public String getOwner() {
+		return owner;
+	}
+	public void setOwner(String owner) {
+		this.owner = owner;
+	}
+	public int getBalance() {
+		return balance;
+	}
+	public void setBalance(int balance) {
+		this.balance = balance;
+	}
+}
 public class ex {
 
+	private static Scanner scanner = new Scanner(System.in);
+	private static Account[] accountArray = new Account[100];
+	
 	public static void main(String[] args) {
-		Scanner scanner = new Scanner(System.in);
 		boolean run = true;
-		int student = 0;
-		int []scores = null;
-		
 		while(run) {
-			System.out.println("--------------------------------------------");
-			System.out.println("1.학생수 | 2.점수입력 | 3.점수리스트 | 4.분석 | 5.종료 ");
-			System.out.println("--------------------------------------------");
+			System.out.println("--------------------------------------");
+			System.out.println("1.계좌생성 | 2.계좌목록 | 3.예금 | 4.출금 | 5.종료");
+			System.out.println("---------------------------------------");
 			System.out.print("선택>");
+			int num = scanner.nextInt();
 			
-			int select = scanner.nextInt();
-			if(select==1) {
-				System.out.print("학생수>");
-				student = scanner.nextInt();
-			}
-			else if(select==2) {
-				scores = new int[student];
-				
-				for(int i=0;i<scores.length;i++) {
-					System.out.print("scores["+i+"]: ");
-					scores[i] = scanner.nextInt();
-				}
-			}
-			else if(select==3) {
-				for(int i=0;i<scores.length;i++) {
-					System.out.println("scores["+i+"] : "+scores[i]);
-				}
-			}
-			else if(select==4) {
-				int max = 0; int sum = 0;
-				for(int i=0;i<scores.length;i++) {
-					if(max<scores[i]) {
-						max = scores[i];
-					}
-					sum += scores[i];
-				}
-				System.out.println("최고 점수: "+max);
-				System.out.println("평균 점수: "+(double)sum/scores.length);
-			}
-			else if(select==5) {
+			if(num==1) {
+				createAccount();
+			}else if(num==2) {
+				accountList();
+			}else if(num==3) {
+				deposit();
+			}else if(num==4) {
+				withdraw();
+			}else if(num==5) {
 				run = false;
 			}
 		}
 		System.out.println("프로그램 종료");
+
 	}
+	private static void createAccount() {
+		System.out.println("-------");
+		System.out.println("계좌생성");
+		System.out.println("-------");
+		System.out.print("계좌번호:");
+		String ano = scanner.next();
+		System.out.print("계좌주:");
+		String owner = scanner.next();
+		System.out.print("초기입금액:");
+		int balance = scanner.nextInt();
+		
+		Account account = new Account(ano,owner,balance);
+		for(int i=0;i<accountArray.length;i++) {
+			if(accountArray[i]==null) {
+				accountArray[i] = account;
+				break;
+			}
+		}
+		System.out.println("결과: 계좌가 생성되었습니다.");
+	}
+	private static void accountList() {
+		System.out.println("-------");
+		System.out.println("계좌목록");
+		System.out.println("-------");
+		
+		for(int i=0;i<accountArray.length;i++) {
+			if(accountArray[i]!=null) {
+				System.out.println(accountArray[i].getAno()+"\t"+accountArray[i].getOwner()+"\t"+accountArray[i].getBalance());
+			}
+		}
+	}
+	private static void deposit() {
+		System.out.println("-------");
+		System.out.println("예금");
+		System.out.println("-------");
+		System.out.print("계좌번호:");
+		String input = scanner.next();
+		
+		for(int i=0;i<accountArray.length;i++) {
+			if(input.equals(accountArray[i].getAno())) {
+				System.out.print("예금액:");
+				int input2 = scanner.nextInt();
+				accountArray[i].setBalance(accountArray[i].getBalance() + input2);
+				break;
+			}
+		}
+		System.out.println("결과:예금이 성공되었습니다.");
+	}
+	private static void withdraw() {
+		System.out.println("-------");
+		System.out.println("풀금");
+		System.out.println("-------");
+		System.out.print("계좌번호:");
+		String input = scanner.next();
+		
+		for(int i=0;i<accountArray.length;i++) {
+			if(input.equals(accountArray[i].getAno())) {
+				System.out.print("출금액:");
+				int input2 = scanner.nextInt();
+				accountArray[i].setBalance(accountArray[i].getBalance() - input2);
+				break;
+			}
+		}
+		System.out.println("결과:출금이 성공되었습니다.");
+	}
+
 }
