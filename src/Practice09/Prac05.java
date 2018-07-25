@@ -17,6 +17,7 @@ class Anonymous{
 			}
 		};
 		localVar.run();
+		
 	}
 	void method2(Vehicle v) {
 		v.run();
